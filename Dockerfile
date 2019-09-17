@@ -31,6 +31,8 @@ COPY package.json package.json
 # - to keep it clean and small, run 'npm cache clean --force' after above
 RUN npm install\
     && npm cache clean --force
+# - (personal) add bash to provide an interactive shell within the container
+RUN apk add bash
 # - then it needs to copy in all files from current directory
 COPY . .
 # - then it needs to start container with command '/sbin/tini -- node ./bin/www'
